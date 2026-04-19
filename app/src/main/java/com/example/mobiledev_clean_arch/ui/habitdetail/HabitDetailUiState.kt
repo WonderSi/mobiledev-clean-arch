@@ -1,6 +1,6 @@
 package com.example.mobiledev_clean_arch.ui.habitdetail
 
-import com.example.mobiledev_clean_arch.domain.model.HabitStats
+import com.example.domain.model.HabitStats
 
 data class HabitDetailUiState(
     val stats: HabitStats? = null,

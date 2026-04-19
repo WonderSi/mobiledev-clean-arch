@@ -48,6 +48,10 @@ android {
 dependencies {
     coreLibraryDesugaring(libs.android.desugar.jdk.libs)
 
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":core"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -60,10 +64,6 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
-
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.viewmodel.savedstate)
 
@@ -75,8 +75,6 @@ dependencies {
 
     implementation(libs.fragment.ktx)
     implementation(libs.recyclerview)
-
-    implementation(project(":core"))
 
     testImplementation(libs.junit)
     testImplementation(libs.konsist)

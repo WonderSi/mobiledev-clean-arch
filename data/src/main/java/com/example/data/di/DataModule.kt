@@ -1,4 +1,4 @@
-package com.example.mobiledev_clean_arch.di
+package com.example.data.di
 
 import com.example.data.repository.HabitRecordRepositoryImpl
 import com.example.data.repository.HabitRepositoryImpl

@@ -2,9 +2,9 @@ package com.example.mobiledev_clean_arch.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.mobiledev_clean_arch.data.local.AppDatabase
-import com.example.mobiledev_clean_arch.data.local.dao.HabitDao
-import com.example.mobiledev_clean_arch.data.local.dao.HabitRecordDao
+import com.example.data.local.AppDatabase
+import com.example.data.local.dao.HabitDao
+import com.example.data.local.dao.HabitRecordDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

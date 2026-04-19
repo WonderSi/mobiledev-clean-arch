@@ -2,8 +2,8 @@ package com.example.mobiledev_clean_arch.ui.habitdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mobiledev_clean_arch.domain.usecase.DeleteHabitUseCase
-import com.example.mobiledev_clean_arch.domain.usecase.GetHabitStatsUseCase
+import com.example.domain.usecase.DeleteHabitUseCase
+import com.example.domain.usecase.GetHabitStatsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -35,12 +35,8 @@ class HabitDetailViewModel @Inject constructor(
 
     fun deleteHabit(habitId: Long, onDeleted: () -> Unit) {
         viewModelScope.launch {
-            try {
-                deleteHabitUseCase(habitId)
-                onDeleted()
-            } catch (e: Exception) {
-                _uiState.update { it.copy(error = e.message) }
-            }
+            try { deleteHabitUseCase(habitId); onDeleted() }
+            catch (e: Exception) { _uiState.update { it.copy(error = e.message) } }
         }
     }
 }

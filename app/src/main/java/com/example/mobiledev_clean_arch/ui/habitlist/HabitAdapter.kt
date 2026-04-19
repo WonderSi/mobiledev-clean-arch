@@ -1,13 +1,12 @@
 package com.example.mobiledev_clean_arch.ui.habitlist
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.model.Habit
 import com.example.mobiledev_clean_arch.databinding.ItemHabitBinding
-import com.example.mobiledev_clean_arch.domain.model.Habit
 
 class HabitAdapter(
     private val onCheckChanged: (Long) -> Unit,
@@ -41,9 +40,7 @@ class HabitAdapter(
         return HabitViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: HabitViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
+    override fun onBindViewHolder(holder: HabitViewHolder, position: Int) = holder.bind(getItem(position))
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Habit>() {

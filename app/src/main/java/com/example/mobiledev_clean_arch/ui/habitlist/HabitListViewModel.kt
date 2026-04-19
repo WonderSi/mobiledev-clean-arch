@@ -2,8 +2,8 @@ package com.example.mobiledev_clean_arch.ui.habitlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mobiledev_clean_arch.domain.usecase.GetAllHabitsUseCase
-import com.example.mobiledev_clean_arch.domain.usecase.ToggleHabitCompletionUseCase
+import com.example.domain.usecase.GetAllHabitsUseCase
+import com.example.domain.usecase.ToggleHabitCompletionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,9 +22,7 @@ class HabitListViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(HabitListUiState(isLoading = true))
     val uiState: StateFlow<HabitListUiState> = _uiState.asStateFlow()
 
-    init {
-        loadHabits()
-    }
+    init { loadHabits() }
 
     private fun loadHabits() {
         viewModelScope.launch {
@@ -36,11 +34,8 @@ class HabitListViewModel @Inject constructor(
 
     fun toggleCompletion(habitId: Long, date: LocalDate = LocalDate.now()) {
         viewModelScope.launch {
-            try {
-                toggleHabitCompletionUseCase(habitId, date)
-            } catch (e: Exception) {
-                _uiState.update { it.copy(error = e.message) }
-            }
+            try { toggleHabitCompletionUseCase(habitId, date) }
+            catch (e: Exception) { _uiState.update { it.copy(error = e.message) } }
         }
     }
 }

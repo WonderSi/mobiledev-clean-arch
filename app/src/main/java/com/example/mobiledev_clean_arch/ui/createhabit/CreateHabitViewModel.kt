@@ -2,7 +2,7 @@ package com.example.mobiledev_clean_arch.ui.createhabit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mobiledev_clean_arch.domain.usecase.CreateHabitUseCase
+import com.example.domain.usecase.CreateHabitUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

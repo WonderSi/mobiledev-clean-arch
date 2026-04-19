@@ -1,8 +1,8 @@
 package com.example.mobiledev_clean_arch.di
 
-import com.example.mobiledev_clean_arch.domain.repository.IHabitRecordRepository
-import com.example.mobiledev_clean_arch.domain.repository.IHabitRepository
-import com.example.mobiledev_clean_arch.domain.usecase.*
+import com.example.domain.repository.IHabitRecordRepository
+import com.example.domain.repository.IHabitRepository
+import com.example.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
