@@ -8,30 +8,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.habits.domain.model.Habit
 import com.example.habits.ui.databinding.ItemHabitBinding
 
+data class HabitListItem(val habit: Habit, val isCompletedToday: Boolean)
+
 class HabitAdapter(
     private val onCheckChanged: (Long) -> Unit,
     private val onItemClick: (Long) -> Unit
-) : ListAdapter<Habit, HabitAdapter.HabitViewHolder>(DIFF_CALLBACK) {
-
-    private val completedToday = mutableSetOf<Long>()
-
-    fun updateCompletedToday(ids: Set<Long>) {
-        completedToday.clear()
-        completedToday.addAll(ids)
-        notifyDataSetChanged()
-    }
+) : ListAdapter<HabitListItem, HabitAdapter.HabitViewHolder>(DIFF_CALLBACK) {
 
     inner class HabitViewHolder(private val binding: ItemHabitBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(habit: Habit) {
-            binding.tvTitle.text = habit.title
-            binding.tvDescription.text = habit.description
-            binding.colorIndicator.setBackgroundColor(habit.color)
+        fun bind(item: HabitListItem) {
+            binding.tvTitle.text = item.habit.title
+            binding.tvDescription.text = item.habit.description
+            binding.colorIndicator.setBackgroundColor(item.habit.color)
             binding.cbCompleted.setOnCheckedChangeListener(null)
-            binding.cbCompleted.isChecked = completedToday.contains(habit.id)
-            binding.cbCompleted.setOnCheckedChangeListener { _, _ -> onCheckChanged(habit.id) }
-            binding.root.setOnClickListener { onItemClick(habit.id) }
+            binding.cbCompleted.isChecked = item.isCompletedToday
+            binding.cbCompleted.setOnCheckedChangeListener { _, _ -> onCheckChanged(item.habit.id) }
+            binding.root.setOnClickListener { onItemClick(item.habit.id) }
         }
     }
 
@@ -45,9 +39,11 @@ class HabitAdapter(
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Habit>() {
-            override fun areItemsTheSame(oldItem: Habit, newItem: Habit) = oldItem.id == newItem.id
-            override fun areContentsTheSame(oldItem: Habit, newItem: Habit) = oldItem == newItem
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<HabitListItem>() {
+            override fun areItemsTheSame(old: HabitListItem, new: HabitListItem) =
+                old.habit.id == new.habit.id
+            override fun areContentsTheSame(old: HabitListItem, new: HabitListItem) =
+                old == new
         }
     }
 }

@@ -52,8 +52,7 @@ class HabitListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
-                    adapter.submitList(state.habits)
-                    adapter.updateCompletedToday(state.completedTodayIds)
+                    adapter.submitList(state.items)
                     binding.progressBar.visibility = if (state.isLoading) View.VISIBLE else View.GONE
                 }
             }

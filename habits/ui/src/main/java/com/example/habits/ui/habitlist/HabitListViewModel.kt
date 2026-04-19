@@ -26,20 +26,17 @@ class HabitListViewModel @Inject constructor(
     val uiState: StateFlow<HabitListUiState> = _uiState.asStateFlow()
 
     init {
-        loadHabits()
-    }
-
-    private fun loadHabits() {
         viewModelScope.launch {
             combine(
                 getAllHabitsUseCase(),
                 habitRecordRepository.getRecordsForDate(LocalDate.now())
             ) { habits, todayRecords ->
                 val completedIds = todayRecords.map { it.habitId }.toSet()
-                HabitListUiState(habits = habits, completedTodayIds = completedIds, isLoading = false)
-            }.collect { state ->
-                _uiState.value = state
-            }
+                val items = habits.map { habit ->
+                    HabitListItem(habit = habit, isCompletedToday = habit.id in completedIds)
+                }
+                HabitListUiState(items = items, isLoading = false)
+            }.collect { _uiState.value = it }
         }
     }
 
