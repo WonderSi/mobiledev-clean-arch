@@ -12,6 +12,8 @@ interface HabitRecordDao {
     suspend fun getRecordForDate(habitId: Long, date: String): HabitRecordEntity?
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(record: HabitRecordEntity)
+    @Query("SELECT * FROM habit_records WHERE completedAt = :date")
+    fun getRecordsForDate(date: String): Flow<List<HabitRecordEntity>>
     @Query("DELETE FROM habit_records WHERE id = :id")
     suspend fun delete(id: Long)
 }
