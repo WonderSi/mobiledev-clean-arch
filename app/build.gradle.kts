@@ -53,6 +53,7 @@ dependencies {
     implementation(project(":habits:data"))
     implementation(project(":stats:ui"))
 
+    implementation(libs.material)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.hilt.android)
