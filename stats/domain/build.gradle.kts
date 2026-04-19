@@ -13,7 +13,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 }
 
 dependencies {
-    // cross-feature reuse of habits domain is allowed
-    implementation(project(":habits:domain"))
+    // api — чтобы :stats:ui видел типы из :habits:domain транзитивно
+    api(project(":habits:domain"))
     implementation(libs.kotlinx.coroutines.core)
 }
