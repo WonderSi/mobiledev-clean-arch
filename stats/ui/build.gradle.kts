@@ -32,5 +32,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.fragment.ktx)
+    implementation(libs.material)
     implementation(libs.androidx.core.ktx)
 }

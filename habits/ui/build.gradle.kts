@@ -34,5 +34,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.fragment.ktx)
     implementation(libs.recyclerview)
+    implementation(libs.material)
+    implementation(libs.cardview)
     implementation(libs.androidx.core.ktx)
 }

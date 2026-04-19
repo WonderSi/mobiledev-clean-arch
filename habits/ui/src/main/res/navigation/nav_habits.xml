@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph"
+    android:id="@+id/nav_habits"
     app:startDestination="@id/habitListFragment">
 
     <fragment
         android:id="@+id/habitListFragment"
-        android:name="com.example.mobiledev_clean_arch.ui.habitlist.HabitListFragment"
+        android:name="com.example.habits.ui.habitlist.HabitListFragment"
         android:label="Habits">
         <action
             android:id="@+id/action_habitList_to_habitDetail"
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/habitDetailFragment"
-        android:name="com.example.mobiledev_clean_arch.ui.habitdetail.HabitDetailFragment"
+        android:name="com.example.stats.ui.habitdetail.HabitDetailFragment"
         android:label="Habit Detail">
         <argument
             android:name="habitId"
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/createHabitFragment"
-        android:name="com.example.mobiledev_clean_arch.ui.createhabit.CreateHabitFragment"
+        android:name="com.example.habits.ui.createhabit.CreateHabitFragment"
         android:label="Create Habit" />
 
 </navigation>
