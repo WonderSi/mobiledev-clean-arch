@@ -22,3 +22,10 @@ dependencyResolutionManagement {
 rootProject.name = "mobiledev-clean-arch"
 include(":app")
 include(":core")
+include(":core:navigation")
+include(":core:ui")
+include(":habits:domain")
+include(":habits:data")
+include(":habits:ui")
+include(":stats:domain")
+include(":stats:ui")
